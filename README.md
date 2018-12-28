@@ -1,2 +1,2 @@
-# google-maps-theme-editor
+# mapsthemeeditor.github.io
 An theme editor to build custom Google Maps themes (default is night mode).
