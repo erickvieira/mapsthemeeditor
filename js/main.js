@@ -73,7 +73,6 @@ function makeTheme() {
   editor.querySelectorAll('input[type="color"]').forEach((input, index) => {
     theme[index].stylers[0].color = input.value;
   });
-  console.log('tema', theme);
   createMap(theme);
 }
 
@@ -82,7 +81,41 @@ window.onload = () => {
   initEditor();
 };
 
-document.querySelector('.copy-button').onclick = copyJSON;
+let insertModal = document.getElementById('insert-json-modal');
+
+document.getElementById('copy').onclick = copyJSON;
+document.getElementById('insert').onclick = () => {
+  document.querySelector('.nav-bar').className = 'nav-bar blur-out';
+  document.getElementById('editor').className = 'blur-out';
+  insertModal.style.display = 'block';
+};
+
+document.getElementById('cancel').onclick = closeModal;
+
+document.getElementById('confirm').onclick = () => {
+  let input = document.getElementById('insert-json-input');
+  if (input.value) {
+    let value = JSON.parse(input.value);
+    if (value instanceof Array) {
+      createMap(value);
+      makeTheme();
+      initEditor();
+      closeModal();
+    } else {
+      alert('The input data does not seems to be an Array value. ' +
+        'Please, visit Google Maps developer documentations for more details.');
+    }
+  } else {
+    alert('The input data does not seems to be an Array value. ' +
+      'Please, visit Google Maps developer documentations for more details.');
+  }
+};
+
+function closeModal() {
+  document.querySelector('.nav-bar').className = 'nav-bar blur-in';
+  document.getElementById('editor').className = 'blur-in';
+  insertModal.style.display = 'none';
+}
 
 function copyJSON($event) {
   let originalClass = $event.target.className;

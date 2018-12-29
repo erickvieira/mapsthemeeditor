@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="An color theme editor, that provides you a tool to see live changes aplied on Google Maps styles.">
+  <meta name="distribution" content="web">
+  <meta name="revisit-after" content="3 days">
+  <meta name="keywords" content="JavaScript,maps api,theme,google maps theme,theme editor,editor,google maps theme,dark theme">
+  <meta name="author" content="Erick Vieira">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/anim.css">
   <title>Google Maps Theme Editor</title>
@@ -13,16 +19,27 @@
   <script src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBZxYL4CcU9gFKlkgW3E_WDt_RpMXbwHDA&libraries=visualization" type="text/javascript"></script>
 </head>
 <body>
-  <div class="nav-bar">
+  <div class="nav-bar blur-in">
     <div class="nav-logo">
       <b>Google Maps Theme Editor</b>
     </div>
-    <button type="button" class="copy-button" (onclick)="copyJSON($event)">
-      Copy JSON to clipboard
-    </button>
+    <div class="nav-buttons">
+      <button type="button" id="copy" class="nav-button left">
+        Copy to clipboard
+      </button>
+      <button type="button" id="insert" class="nav-button right">
+        Insert theme
+      </button>
+    </div>
   </div>
-  <form id="editor"></form>
+  <form id="editor" class="blur-in"></form>
   <div id="map"></div>
+  <div id="insert-json-modal" style="display: none">
+    <label for="insert-json-input">Paste your custom array of styles here:</label>
+    <textarea id="insert-json-input" cols="80" rows="20"></textarea>
+    <button type="button" id="confirm">Confirm</button>
+    <button type="button" id="cancel">Cancel</button>
+  </div>
   <script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>
