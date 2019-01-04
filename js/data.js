@@ -1,4 +1,4 @@
-const INITIAL_STYLE = const INITIAL_STYLE = [
+const INITIAL_STYLE = [
   {
     "elementType": "geometry",
     "stylers": [
